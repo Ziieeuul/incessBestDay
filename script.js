@@ -418,7 +418,7 @@ if(yesLink){
     e.preventDefault();
     // WhatsApp romantic message
     const msg = encodeURIComponent("Yes… I would love to be your boyfriend 💚💫 Forever yours, my matcha princess.");
-    window.open("https://wa.me/01133184685?text=" + msg, "_blank");
+    window.open("https://wa.me/+601133184685?text=" + msg, "_blank");
   }
 }
 
@@ -447,6 +447,7 @@ if(noLink){
 
 
 }
+
 
 
 
