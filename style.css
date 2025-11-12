@@ -1,0 +1,398 @@
+:root{
+  --pink:#ffeef5;
+  --matcha:#bfe9c2;
+  --deep-matcha:#3b5e40;
+  --cream:#fff8f0;
+  --accent:#f9d7e4;
+}
+
+/* reset */
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter, Poppins, system-ui, sans-serif}
+body{
+  background: linear-gradient(180deg,var(--pink), #fff7f9);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+
+/* top controls */
+.controls-top{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+  align-items:center;
+  z-index:40;
+}
+.nav-btn{
+  background:var(--matcha);
+  border:none;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  color:var(--deep-matcha);
+  box-shadow:0 6px 12px rgba(59,94,64,0.12);
+}
+.music-control{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  background:rgba(255,255,255,0.6);
+  padding:6px 10px;
+  border-radius:999px;
+  backdrop-filter: blur(4px);
+}
+#musicBtn{ background:var(--accent); border:none; padding:6px 10px; border-radius:50%; cursor:pointer;}
+.music-label{ font-size:0.9rem; color:#333; opacity:0.85; font-weight:600; }
+
+/* card scene */
+.card-scene{
+  width:min(920px,95vw);
+  height:min(560px,80vh);
+  perspective: 2000px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:18px;
+}
+
+/* the "card" shell */
+.card-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition: transform 1s cubic-bezier(.2,.9,.2,1);
+  box-shadow: 0 30px 60px rgba(44,33,72,0.08);
+}
+
+/* each page is positioned absolute and backface-visibility hidden */
+.page{
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(180deg,var(--cream),white);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  backface-visibility:hidden;
+  transform-origin: left center;
+}
+
+/* look of front & back */
+.page .content {
+  width:100%;
+  max-width:820px;
+}
+.cover{
+  background: linear-gradient(135deg,var(--accent),var(--matcha));
+  color:var(--deep-matcha);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  text-align:center;
+}
+.cover h1{
+  font-size:2.8rem;
+  letter-spacing:1px;
+}
+.cover .tag{ font-size:1.05rem; color:#2b5930; opacity:0.95; }
+.cover .cup-icon{ width:120px; height:120px; filter: drop-shadow(0 6px 18px rgba(59,94,64,0.12)); }
+
+/* inner pages basic */
+.inner-page{ background: linear-gradient(180deg, #fff, #fffaf6); color:var(--deep-matcha); text-align:center; padding:20px; }
+.inner-page h2{ color:var(--deep-matcha); margin-bottom:10px; font-size:1.6rem; }
+.inner-page p{ color:#355b42; max-width:760px; margin:0 auto; line-height:1.6; }
+
+/* gallery */
+.gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }
+.gallery-grid img{ width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(59,94,64,0.06); }
+
+/* ======== Fun Zone Styles ======== */
+.page.inner-page .game-pane {
+  margin-top: 16px;
+  width: 100%;
+  height: 220px;              /* adjust card-friendly height */
+  position: relative;
+  border: 2px dashed #c9f0d9; /* soft matcha border */
+  border-radius: 16px;
+  background: #f0fff2;        /* pastel matcha background */
+  overflow: hidden;            /* cups stay inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.page.inner-page .game-pane:hover {
+  box-shadow: 0 8px 20px rgba(59,94,64,0.15);
+}
+
+#gameArea {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#score {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #355b42;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Fun Buttons */
+.page.inner-page .fun-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.page.inner-page .fun-buttons button {
+  background: linear-gradient(90deg, #c9f0d9, #9bdc9b);
+  color: #275033;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.page.inner-page .fun-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(59,94,64,0.15);
+}
+
+/* Wish Input & Send Button */
+.page.inner-page #wishInput {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #e8f3ea;
+  width: 60%;
+  max-width: 250px;
+  margin-right: 8px;
+}
+
+.page.inner-page #sendWishSmall {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  background: #c9f0d9;
+  color: #275033;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.page.inner-page #sendWishSmall:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(59,94,64,0.15);
+}
+
+/* Wish Area Messages */
+#wishArea {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: visible;
+}
+
+.wish {
+  position: absolute;
+  bottom: 0;
+  font-weight: 700;
+  color: #355b42;
+  background: linear-gradient(90deg,#fff8fb,#f0fff2);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Lightbox for gallery (inside Fun Zone) */
+#lightbox {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+}
+
+#lightboxClose {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media(max-width: 420px){
+  .page.inner-page .game-pane { height: 180px; }
+  .page.inner-page #wishInput { width: 50%; }
+  .page.inner-page .fun-buttons button { padding: 8px 10px; font-size: 14px; }
+}
+
+
+/* game area inside card */
+.game-pane{ width:100%; max-width:520px; margin:12px auto; text-align:center; }
+#gameArea{ width:100%; height:200px; border-radius:12px; background:#fff; border:2px dashed #e8f3ea; position:relative; overflow:hidden; }
+#gameArea img{ width:56px; position:absolute; cursor:pointer; transition:transform .08s; }
+#score{ margin-top:8px; color:var(--deep-matcha); font-weight:700; }
+
+/* wishboard input */
+#wishArea{ position:relative; width:100%; height:140px; overflow:hidden; margin-top:12px; }
+.wish{ position:absolute; font-weight:700; background:linear-gradient(90deg,#fff,#f9fff2); padding:6px 10px; border-radius:999px; box-shadow:0 8px 20px rgba(59,94,64,0.08); }
+
+/* sparkle canvas */
+#sparkle{ position:absolute; inset:0; pointer-events:none; }
+
+/* pager */
+.pager{ text-align:center; margin-top:14px; color:#4a6a50; font-weight:700; }
+
+/* make inner page scrollable if content overflows */
+.inner-page{
+  overflow-y:auto;
+  padding:20px;
+  text-align:center;
+  background: linear-gradient(180deg, #fff, #fffaf6);
+  color: var(--deep-matcha);
+  border-radius:18px;
+}
+
+.gallery-container {
+  margin-top: 16px; /* space below the title */
+  height: 350px; /* adjust to fit nicely inside page */
+  overflow-y: auto; /* vertical scroll */
+  padding-right: 8px; /* space for scrollbar */
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f0fff2, #ffffff); /* soft pastel background */
+  box-shadow: inset 0 2px 12px rgba(59,94,64,0.05);
+}
+
+/* gallery grid inside page */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+.gallery-grid img{
+  width:100%;
+  height:120px; /* uniform height */
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-grid img:hover{
+  transform: scale(1.1);
+  box-shadow:0 10px 22px rgba(59,94,64,0.15);
+}
+
+#timer {
+  text-align: center;
+  font-weight: 700;
+  color: #275033;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+
+/* Lightbox overlay */
+.lightbox{
+  display:none;
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+#lightboxClose{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.confessBtn {
+  padding: 14px 24px;
+  margin: 0 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.yesBtn {
+  background: var(--matcha);
+  color: var(--deep-matcha);
+}
+
+.noBtn {
+  background: #f4c7c3;
+  color: #a33;
+}
+
+.confessBtn:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.blur-content {
+  filter: blur(10px);
+  pointer-events: none; /* disable clicks before quiz finished */
+  transition: filter 1s ease;
+}
+
+.blur-content.unblur {
+  filter: blur(0);
+  pointer-events: auto; /* enable interaction */
+}
+
+
+/* small screens */
+@media (max-width:700px){
+  .cover h1{ font-size:2rem; }
+  #gameArea{ height:150px; }
+  .controls-top{ top:8px; gap:8px; }
+}

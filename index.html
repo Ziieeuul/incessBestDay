@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hey Matcha Girl</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Top controls -->
+    <div class="controls-top">
+      <button id="prevBtn" class="nav-btn">⟵ Prev</button>
+      <div class="music-control">
+        <button id="musicBtn" class="play">▶</button>
+        <span class="music-label">Happy Birthday To You!</span>
+        <audio id="bgMusic" loop>
+          <source src="HAPPY BIRTHDAY INSTRUMENTAL ( LOFI VERSION ).mp3" type="audio/mpeg" />
+          Your browser doesn't support audio.
+        </audio>
+      </div>
+      <button id="nextBtn" class="nav-btn">Next ⟶</button>
+    </div>
+
+    <!-- Book card container -->
+    <div class="card-scene">
+      <div id="cardInner" class="card-inner">
+        <div class="book-page left-page"></div>
+        <div class="book-page right-page"></div>
+      </div>
+    </div>
+
+    <!-- Pager -->
+    <div class="pager">
+      <span id="pageIndicator">Page 1 / 5</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
